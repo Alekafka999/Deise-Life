@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A Vida de Deise</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #F2F2F2 0%, #D9BF41 50%, #F2B999 100%);
+      color: #260101;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    header {
+      padding: 3rem 0;
+      text-align: center;
+      position: relative;
+    }
+
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 700;
+      color: #242259;
+      margin-bottom: 1rem;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+      animation: fadeInUp 1s ease-out;
+    }
+
+    .subtitle {
+      font-size: 1.3rem;
+      color: #402A01;
+      font-weight: 400;
+      margin-bottom: 2rem;
+      animation: fadeInUp 1s ease-out 0.3s both;
+    }
+
+    .books-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+      gap: 3rem;
+      margin: 4rem 0;
+    }
+
+    .book-card {
+      background: rgba(255,255,255,0.9);
+      border-radius: 20px;
+      padding: 2rem;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .book-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+    }
+
+    .book-card.book1 {
+      border-left: 5px solid #242259;
+    }
+
+    .book-card.book1::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 100px;
+      height: 100px;
+      background: linear-gradient(45deg, #D9BF41, #D9B54A);
+      border-radius: 0 0 0 100px;
+      opacity: 0.3;
+    }
+
+    .book-card.book2 {
+      border-left: 5px solid #733E32;
+    }
+
+    .book-card.book2::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 100px;
+      height: 100px;
+      background: linear-gradient(45deg, #F2B999, #F2AB9B);
+      border-radius: 0 0 0 100px;
+      opacity: 0.3;
+    }
+
+  book-number {
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 0.3rem; /* valor menor para menos espaço */
+  position: relative;
+  z-index: 2;
+}
+
+.book-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-top: 0.2rem;   /* reduzido ou até 0 */
+  margin-bottom: 1.5rem;
+  color: #260101;
+}
+
+    .book1 .book-number {
+      color: #242259;
+    }
+
+    .book2 .book-number {
+      color: #733E32;
+    }
+
+    .book-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      color: #260101;
+    }
+
+    .color-palette {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .color-dot {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      border: 2px solid rgba(255,255,255,0.8);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    .color-dot:hover {
+      transform: scale(1.2);
+    }
+
+    .book-description {
+      font-size: 1rem;
+      color: #402A01;
+      margin-bottom: 2rem;
+      line-height: 1.7;
+    }
+
+    .cta-button {
+      background: linear-gradient(45deg, #242259, #402A01);
+      color: #F2F2F2;
+      border: none;
+      padding: 1rem 2.5rem;
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .cta-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+      background: linear-gradient(45deg, #402A01, #242259);
+    }
+
+    .book2 .cta-button {
+      background: linear-gradient(45deg, #733E32, #260101);
+    }
+
+    .book2 .cta-button:hover {
+      background: linear-gradient(45deg, #260101, #733E32);
+    }
+
+    .authors-section {
+      background: rgba(255,255,255,0.8);
+      padding: 3rem 2rem;
+      border-radius: 20px;
+      margin: 4rem 0;
+      text-align: center;
+      backdrop-filter: blur(10px);
+    }
+
+    .authors-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      color: #242259;
+      margin-bottom: 2rem;
+    }
+
+    .authors-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+
+    .author-card {
+      background: rgba(255,255,255,0.6);
+      padding: 1.5rem;
+      border-radius: 15px;
+      transition: transform 0.3s ease;
+    }
+
+    .author-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .author-name {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #260101;
+      margin-bottom: 0.5rem;
+    }
+
+    .floating-elements {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .floating-dot {
+      position: absolute;
+      border-radius: 50%;
+      animation: float 8s ease-in-out infinite;
+    }
+
+    .floating-dot:nth-child(1) {
+      width: 20px;
+      height: 20px;
+      background: #D9BF41;
+      top: 20%;
+      left: 10%;
+      animation-delay: 0s;
+    }
+
+    .floating-dot:nth-child(2) {
+      width: 15px;
+      height: 15px;
+      background: #F2B999;
+      top: 60%;
+      right: 15%;
+      animation-delay: 2s;
+    }
+
+    .floating-dot:nth-child(3) {
+      width: 25px;
+      height: 25px;
+      background: #242259;
+      top: 80%;
+      left: 20%;
+      animation-delay: 4s;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-30px) rotate(180deg); }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .pulse-animation {
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    @media (max-width: 768px) {
+      .books-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      
+      .container {
+        padding: 0 15px;
+      }
+
+      .book-card {
+        padding: 1.5rem;
+      }
+
+      .color-palette {
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="floating-elements">
+    <div class="floating-dot"></div>
+    <div class="floating-dot"></div>
+    <div class="floating-dot"></div>
+  </div>
+
+  <div class="container">
+    <header>
+      <h1 class="hero-title">A Vida de Deise</h1>
+      <p class="subtitle">em dois volumes</p>
+    </header>
+
+    <main class="books-container">
+      <div class="book-card book1" onmouseenter="addPulse(this)" onmouseleave="removePulse(this)">
+        <div class="book-number">Livro 1</div>
+        <h2 class="book-title">A Vida de Deise - Volume 1</h2>
+       <img src="deise 1.jpg" alt="Capa do Livro 1" style="width:100%;max-width:220px;display:block;margin:0 auto 1.5rem auto;border-radius:12px;box-shadow:0 4px 16px rgba(0,0,0,0.08);">
+  <p class="book-description">
+    O primeiro volume desta história inspiradora nos apresenta Deise e o início de sua jornada. 
+    Uma narrativa tocante sobre resilência, esperança e a força interior que todos possuímos 
+    para superar os desafios da vida.
+  </p>
+        
+        <a href="https://lojahucitec.com.br/produto/a-vida-deise-deise-abreu-pacheco-ana-claudia-romano-ribeiro/" 
+           target="_blank" 
+           rel="noopener" 
+           class="cta-button">
+          Adquirir Volume 1
+        </a>
+      </div>
+
+      <div class="book-card book2" onmouseenter="addPulse(this)" onmouseleave="removePulse(this)">
+        <div class="book-number">Livro 2</div>
+        <h2 class="book-title">A Vida de Deise - Volume 2</h2>
+        
+        <img src="deise 2.jpg" alt="Capa do Livro 1" style="width:100%;max-width:220px;display:block;margin:0 auto 1.5rem auto;border-radius:12px;box-shadow:0 4px 16px rgba(0,0,0,0.08);">
+  <p class="book-description">
+           
+        <p class="book-description">
+          A continuação da jornada de Deise traz novos desafios e descobertas. 
+          Este segundo volume aprofunda a narrativa, explorando temas de crescimento pessoal, 
+          relacionamentos e a busca constante pela felicidade e realização.
+        </p>
+        
+        <a href="https://lojahucitec.com.br/produto/a-vida-de-deise-tomo-1-deise-abreu-pacheco-ana-claudia-romano-ribeiro-copia/" 
+           target="_blank" 
+           rel="noopener" 
+           class="cta-button">
+          Adquirir Volume 2
+        </a>
+      </div>
+    </main>
+
+    <section class="authors-section">
+      <h3 class="authors-title">Conheça as Autoras</h3>
+      <div class="authors-grid">
+        <div class="author-card">
+          <div class="author-name">Deise Abreu Pacheco</div>
+          <p>Protagonista e coautora desta história inspiradora de superação e crescimento pessoal.</p>
+          <a href="https://sl1nk.com/zCzJU" 
+           target="_blank" 
+           rel="noopener" 
+           class="cta-button">
+          Saiba mais sobre a Deise
+        </a>
+        </div>
+        <div class="author-card">
+          <div class="author-name">Ana Cláudia Romano Ribeiro</div>
+          <p>Escritora e colaboradora, responsável por dar vida literária à jornada de Deise.</p>
+          <a href="http://lattes.cnpq.br/9815025268221797" 
+           target="_blank" 
+           rel="noopener" 
+           class="cta-button">
+          Saiba mais sobre a Ana Claúdia
+        </a>
+        </div>
+      </div>
+      
+      <div style="margin-top: 2rem; text-align: center;">
+        <p style="font-size: 1.1rem; color: #242259; margin-bottom: 1rem;">A Vida de Deise é uma webtirinha 
+          postada no Instagram uma segunda-feira sim outra não.</p>
+        <a href="https://www.instagram.com/acrribeiro/" 
+   target="_blank" 
+   rel="noopener" 
+   class="cta-button"
+   style="display:inline-flex;align-items:center;justify-content:center;padding:0.7rem 1.2rem;">
+  <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 448 512" fill="#fff" style="margin-right:0;">
+    <rect width="100%" height="100%" fill="none"/>
+    <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9 114.9-51.3 114.9-114.9S287.7 141 224.1 141zm0 186c-39.5 0-71.5-32-71.5-71.5s32-71.5 71.5-71.5 71.5 32 71.5 71.5-32 71.5-71.5 71.5zm146.4-194.3c0 14.9-12.1 27-27 27s-27-12.1-27-27 12.1-27 27-27 27 12.1 27 27zm76.1 27.2c-1.7-35.3-9.9-66.7-36.2-92.9S388.6 1.7 353.3 0C317.7-1.7 282.3-1.7 246.7 0c-35.3 1.7-66.7 9.9-92.9 36.2S1.7 123.4 0 158.7C-1.7 194.3-1.7 229.7 0 265.3c1.7 35.3 9.9 66.7 36.2 92.9s57.6 34.5 92.9 36.2c35.6 1.7 71 1.7 106.6 0 35.3-1.7 66.7-9.9 92.9-36.2s34.5-57.6 36.2-92.9c1.7-35.6 1.7-71 0-106.6zM398.8 388c-7.8 19.6-22.9 34.7-42.5 42.5-29.4 11.7-99.2 9-132.3 9s-102.9 2.6-132.3-9c-19.6-7.8-34.7-22.9-42.5-42.5-11.7-29.4-9-99.2-9-132.3s-2.6-102.9 9-132.3c7.8-19.6 22.9-34.7 42.5-42.5 29.4-11.7 99.2-9 132.3-9s102.9-2.6 132.3 9c19.6 7.8 34.7 22.9 42.5 42.5 11.7 29.4 9 99.2 9 132.3s2.6 102.9-9 132.3z"/>
+  </svg>
+</a>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    function changeBackground(color) {
+      document.body.style.background = `linear-gradient(135deg, ${color} 0%, #F2F2F2 50%, ${color} 100%)`;
+      
+      // Adiciona efeito de transição suave
+      document.body.style.transition = 'background 0.5s ease';
+      
+      // Remove a transição após a animação para não afetar outras interações
+      setTimeout(() => {
+        document.body.style.transition = '';
+      }, 500);
+    }
+
+    function addPulse(element) {
+      element.classList.add('pulse-animation');
+    }
+
+    function removePulse(element) {
+      element.classList.remove('pulse-animation');
+    }
+
+    // Animação de entrada dos cards
+    window.addEventListener('load', () => {
+      const cards = document.querySelectorAll('.book-card');
+      cards.forEach((card, index) => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(50px)';
+        card.style.transition = 'all 0.6s ease';
+        
+        setTimeout(() => {
+          card.style.opacity = '1';
+          card.style.transform = 'translateY(0)';
+        }, index * 300 + 500);
+      });
+    });
+
+    // Efeito de parallax nos elementos flutuantes
+    window.addEventListener('scroll', () => {
+      const scrolled = window.pageYOffset;
+      const parallax = document.querySelectorAll('.floating-dot');
+      
+      parallax.forEach((element, index) => {
+        const speed = 0.5 + (index * 0.2);
+        element.style.transform = `translateY(${scrolled * speed}px) rotate(${scrolled * 0.1}deg)`;
+      });
+    });
+
+    // Restaura o background original após 3 segundos
+    let backgroundTimeout;
+    const originalBackground = 'linear-gradient(135deg, #F2F2F2 0%, #D9BF41 50%, #F2B999 100%)';
+    
+    function changeBackground(color) {
+      document.body.style.background = `linear-gradient(135deg, ${color} 0%, #F2F2F2 50%, ${color} 100%)`;
+      document.body.style.transition = 'background 0.5s ease';
+      
+      clearTimeout(backgroundTimeout);
+      backgroundTimeout = setTimeout(() => {
+        document.body.style.background = originalBackground;
+      }, 3000);
+      
+      setTimeout(() => {
+        document.body.style.transition = '';
+      }, 500);
+    }
+  </script>
+
+</body>
+</html>
