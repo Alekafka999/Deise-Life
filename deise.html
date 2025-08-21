@@ -3,85 +3,241 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>A Vida de Deise</title>
+  <title>A Vida de Deise - Uma História Inspiradora</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
-    body {
+    * {
       margin: 0;
-      font-family: "Courier New", monospace;
-      background-color: #d6b33f; /* amarelo da capa */
-      color: #111;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #f4e4a6 0%, #d6b33f 100%);
+      color: #2c2c2c;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    header {
+      padding: 3rem 0;
+      text-align: center;
+      position: relative;
+    }
+
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 1rem;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .subtitle {
+      font-size: 1.3rem;
+      color: #555;
+      font-weight: 300;
+      margin-bottom: 2rem;
+    }
+
+    .book-showcase {
+      display: flex;
+      align-items: center;
+      gap: 3rem;
+      margin: 4rem 0;
+      flex-wrap: wrap;
+    }
+
+    .book-image {
+      flex: 1;
+      min-width: 300px;
       text-align: center;
     }
-    header {
-      padding: 2rem 1rem;
-    }
-    header h1 {
-      font-size: 2.5rem;
-      border-bottom: 2px solid #111;
-      display: inline-block;
-      padding-bottom: 0.3rem;
-    }
-    .subtitulo {
-      font-size: 1.2rem;
-      margin-top: 0.5rem;
-      font-style: italic;
-    }
-    .imagem {
-      margin: 2rem auto;
-      max-width: 400px;
-    }
-    .imagem img {
+
+    .book-image img {
       width: 100%;
-      border: 3px solid #111;
+      max-width: 400px;
+      border-radius: 15px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease;
     }
-    .autores {
-      font-size: 1rem;
-      margin: 1rem 0;
+
+    .book-image img:hover {
+      transform: translateY(-10px);
     }
-    .cta {
-      margin: 2rem 0;
+
+    .book-info {
+      flex: 1;
+      min-width: 300px;
+      text-align: left;
     }
-    .cta button {
-      background: #111;
-      color: #fff;
+
+    .authors {
+      background: rgba(255,255,255,0.3);
+      padding: 2rem;
+      border-radius: 15px;
+      margin-bottom: 2rem;
+      backdrop-filter: blur(10px);
+    }
+
+    .authors h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: #1a1a1a;
+    }
+
+    .author-name {
+      display: flex;
+      align-items: center;
+      margin: 0.8rem 0;
+      font-size: 1.1rem;
+      color: #333;
+    }
+
+    .author-name::before {
+      content: '✦';
+      color: #d6b33f;
+      font-size: 1.3rem;
+      margin-right: 0.8rem;
+    }
+
+    .description {
+      background: rgba(255,255,255,0.4);
+      padding: 2rem;
+      border-radius: 15px;
+      margin-bottom: 2rem;
+      backdrop-filter: blur(10px);
+    }
+
+    .description p {
+      font-size: 1.1rem;
+      color: #444;
+      margin-bottom: 1rem;
+    }
+
+    .cta-section {
+      text-align: center;
+      margin: 3rem 0;
+    }
+
+    .cta-button {
+      background: linear-gradient(45deg, #1a1a1a, #333);
+      color: white;
       border: none;
-      padding: 1rem 2rem;
-      font-size: 1rem;
+      padding: 1.2rem 3rem;
+      font-size: 1.1rem;
+      font-weight: 500;
+      border-radius: 50px;
       cursor: pointer;
-      border-radius: 6px;
-      transition: background 0.3s;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      text-transform: uppercase;
+      letter-spacing: 1px;
     }
-    .cta button:hover {
-      background: #444;
+
+    .cta-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+      background: linear-gradient(45deg, #333, #555);
     }
+
     footer {
-      margin-top: 3rem;
-      padding: 1rem;
-      font-size: 0.9rem;
+      background: rgba(0,0,0,0.1);
+      padding: 2rem 0;
+      text-align: center;
+      margin-top: 4rem;
+      backdrop-filter: blur(10px);
+    }
+
+    .publisher {
+      font-size: 1rem;
+      color: #666;
+      font-weight: 300;
+    }
+
+    .decorative-element {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 50%;
+      top: 20px;
+      right: 20px;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+    }
+
+    @media (max-width: 768px) {
+      .book-showcase {
+        flex-direction: column;
+        text-align: center;
+      }
+      
+      .book-info {
+        text-align: center;
+      }
+      
+      .authors, .description {
+        text-align: left;
+      }
+      
+      .container {
+        padding: 0 15px;
+      }
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>A Vida de Deise</h1>
-    <p class="subtitulo">Uma criação de</p>
-  </header>
+  <div class="container">
+    <header>
+      <div class="decorative-element"></div>
+      <h1 class="hero-title">A Vida de Deise</h1>
+      <p class="subtitle">Uma história de superação e inspiração</p>
+    </header>
 
-  <div class="imagem">
-    <img src="vida de deise.jpg" alt="Capa A Vida de Deise">
-  </div>
+    <main class="book-showcase">
+      <div class="book-image">
+        <img src="vida de deise.jpg" alt="Capa do livro A Vida de Deise">
+      </div>
+      
+      <div class="book-info">
+        <div class="authors">
+          <h3>Autoras</h3>
+          <div class="author-name">Deise Abreu Pacheco</div>
+          <div class="author-name">Ana Cláudia Romano Ribeiro</div>
+        </div>
+        
+        <div class="description">
+          <p>Uma narrativa tocante que explora os desafios e triunfos da vida humana através da perspectiva única de Deise.</p>
+          <p>Este livro oferece uma reflexão profunda sobre resilência, esperança e a capacidade extraordinária do ser humano de superar adversidades.</p>
+        </div>
+      </div>
+    </main>
 
-  <section class="autores">
-    <p>✦ Deise Abreu Pacheco</p>
-    <p>✦ Ana Cláudia Romano Ribeiro</p>
-  </section>
-
-  <div class="cta">
-    <button>Quero Saber Mais</button>
+    <section class="cta-section">
+      <a href="https://lojahucitec.com.br/produto/a-vida-deise-deise-abreu-pacheco-ana-claudia-romano-ribeiro/" target="_blank" rel="noopener">
+        <button class="cta-button">Quero Saber Mais</button>
+      </a>
+    </section>
   </div>
 
   <footer>
-    <p>Publicado por Hucitec</p>
+    <div class="container">
+      <p class="publisher">Publicado por <strong>Hucitec</strong></p>
+    </div>
   </footer>
 </body>
 </html>
