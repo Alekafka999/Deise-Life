@@ -213,7 +213,71 @@ header {
   fill: currentColor;
 }
 
+.floating-elements {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+}
 
+.floating-dot {
+  position: absolute;
+  border-radius: 50%;
+  animation: float 8s ease-in-out infinite;
+}
+
+.floating-dot:nth-child(1) {
+  width: 16px;
+  height: 16px;
+  background: #6B4E71;
+  top: 15%;
+  left: 8%;
+  animation-delay: 0s;
+}
+
+.floating-dot:nth-child(2) {
+  width: 14px;
+  height: 14px;
+  background: #4D6B66;
+  top: 65%;
+  right: 12%;
+  animation-delay: 1.5s;
+}
+
+.floating-dot:nth-child(3) {
+  width: 18px;
+  height: 18px;
+  background: #8C5A2B;
+  top: 85%;
+  left: 25%;
+  animation-delay: 3s;
+}
+
+.floating-dot:nth-child(4) {
+  width: 12px;
+  height: 12px;
+  background: #2E4A8B;
+  top: 35%;
+  right: 30%;
+  animation-delay: 4.5s;
+}
+
+.floating-dot:nth-child(5) {
+  width: 15px;
+  height: 15px;
+  background: #7A4B3A;
+  top: 75%;
+  left: 75%;
+  animation-delay: 6s;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-25px) rotate(180deg); }
+}
 
 .pulse-animation {
   animation: pulse 2s ease-in-out infinite;
