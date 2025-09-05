@@ -44,6 +44,17 @@ header {
   margin: 2rem 0;
 }
 
+@supports not (display: grid) {
+  .books-container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .book-card {
+    margin-bottom: 2rem;
+  }
+}
+
 .book-card {
   background: rgba(255,255,255,0.9);
   border-radius: 15px;
@@ -288,6 +299,24 @@ header {
   50% { transform: scale(1.03); }
 }
 
+/* Tablets grandes e desktops pequenos */
+@media (max-width: 1024px) {
+  .container {
+    max-width: 95%;
+    padding: 0 15px;
+  }
+  
+  .books-container {
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 1.8rem;
+  }
+  
+  .hero-title {
+    font-size: 2.2rem;
+  }
+}
+
+/* Tablets */
 @media (max-width: 768px) {
   .books-container {
     grid-template-columns: 1fr;
@@ -304,5 +333,143 @@ header {
 
   .hero-title {
     font-size: 2rem;
+  }
+  
+  .authors-grid {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+  }
+  
+  .floating-dot {
+    display: none;
+  }
+}
+
+/* Smartphones grandes */
+@media (max-width: 480px) {
+  .container {
+    padding: 0 10px;
+  }
+  
+  header {
+    padding: 1.5rem 0;
+  }
+  
+  .hero-title {
+    font-size: 1.8rem;
+    margin-bottom: 0.3rem;
+  }
+  
+  .subtitle {
+    font-size: 1rem;
+  }
+  
+  .book-card {
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .book-number {
+    font-size: 1.5rem;
+  }
+  
+  .book-title {
+    font-size: 1.1rem;
+  }
+  
+  .book-description {
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+  
+  .cta-button {
+    padding: 0.7rem 1.5rem;
+    font-size: 0.8rem;
+    width: 100%;
+    text-align: center;
+  }
+  
+  .authors-section {
+    padding: 1.5rem 1rem;
+  }
+  
+  .authors-title {
+    font-size: 1.5rem;
+  }
+  
+  .author-card {
+    padding: 1rem;
+  }
+  
+  .instagram-button {
+    padding: 0.7rem 1.5rem;
+    font-size: 0.8rem;
+  }
+}
+
+/* Smartphones pequenos */
+@media (max-width: 360px) {
+  .hero-title {
+    font-size: 1.6rem;
+  }
+  
+  .book-card {
+    padding: 0.8rem;
+  }
+  
+  .book-number {
+    font-size: 1.3rem;
+  }
+  
+  .book-title {
+    font-size: 1rem;
+  }
+  
+  .cta-button {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.75rem;
+  }
+  
+  .authors-section {
+    padding: 1rem 0.5rem;
+  }
+}
+
+/* Telas muito grandes (4K, ultrawide) */
+@media (min-width: 1440px) {
+  .container {
+    max-width: 1400px;
+  }
+  
+  .books-container {
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    gap: 3rem;
+  }
+  
+  .hero-title {
+    font-size: 3rem;
+  }
+  
+  .book-card {
+    padding: 2rem;
+  }
+}
+
+/* Orientação paisagem em dispositivos móveis */
+@media (max-height: 500px) and (orientation: landscape) {
+  header {
+    padding: 1rem 0;
+  }
+  
+  .hero-title {
+    font-size: 1.5rem;
+  }
+  
+  .subtitle {
+    font-size: 0.9rem;
+  }
+  
+  .floating-dot {
+    display: none;
   }
 }
