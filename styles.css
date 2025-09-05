@@ -61,6 +61,7 @@ header {
   padding: 1.5rem;
   box-shadow: 0 10px 25px rgba(0,0,0,0.1);
   transition: all 0.3s ease;
+  text-align: center;
 }
 
 .book-card:hover {
@@ -70,6 +71,7 @@ header {
 
 .book-card.book1 {
   border-left: 4px solid #242259;
+  ;
 }
 
 .book-card.book2 {
@@ -84,14 +86,20 @@ header {
 
 .book1 .book-number {
   color: #242259;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
 }
 
 .book2 .book-number {
   color: #733E32;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
 }
 
 .book-title {
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   font-weight: 600;
   margin-bottom: 1rem;
   color: #260101;
